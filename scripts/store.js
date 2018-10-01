@@ -1,5 +1,5 @@
 'use strict'; 
-/* global store */
+/* global Item, store */
 const store = (function () { 
   let items = [
     { id: cuid(), name: 'apples', checked: false },
@@ -20,6 +20,7 @@ const store = (function () {
       this.items.push(Item.create(name));
 
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(error.message);
     }
   };
@@ -29,23 +30,21 @@ const store = (function () {
       Item.validateName(newName);
       this.findById(id).name = newName;
     } catch (error) {
+      // eslint-disable-next-line no-console
       console.log(`Cannot update name: ${error.message}`);
     }
-  }
+  }; 
 
   let findAndToggleChecked = function(id){
     this.findById(id).checked = !this.findById(id).checked;
   };
 
   let findAndDelete = function(id){
-
     this.items = this.items.filter(item => id !== this.findById(item.id).id);
-
   };
 
   return {items, hideCheckedItems, searchTerm, addItem, findAndToggleChecked, findAndDelete, findAndUpdateName, findById}; 
 }()); 
-
 
 
 console.log(store);
