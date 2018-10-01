@@ -1,5 +1,5 @@
 'use strict'; 
-
+/* global cuid */
 const Item = (function(){ 
 
   const validateName = function(name){
@@ -14,4 +14,6 @@ const Item = (function(){
 
   return {validateName, create}; 
 }()); 
+
+
 

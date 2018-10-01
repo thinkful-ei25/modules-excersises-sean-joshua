@@ -10,7 +10,7 @@ const store = (function () {
 
   let hideCheckedItems = false;
   let searchTerm = '';
-  let foo = 'bar'; 
+
   let findById = function(id){
     return items.find(item => item.id === id);
   };
@@ -55,5 +55,3 @@ const store = (function () {
     findAndDelete, findAndUpdateName, findById, setSearchTerm, toggleCheckedFilter}; 
 }()); 
 
-
-console.log(store);
