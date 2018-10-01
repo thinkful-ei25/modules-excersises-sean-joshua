@@ -1,6 +1,8 @@
+'use strict'; 
 /* global store, cuid */
 
 // eslint-disable-next-line no-unused-vars
+/*eslint-env jquery*/
 const shoppingList = (function(){
 
   function generateItemElement(item) {
@@ -47,6 +49,7 @@ const shoppingList = (function(){
     }
   
     // render the shopping list in the DOM
+    // eslint-disable-next-line no-console
     console.log('`render` ran');
     const shoppingListItemsString = generateShoppingItemsString(items);
   
