@@ -1,5 +1,5 @@
 'use strict'; 
-/* global Item, store */
+/* global Item, cuid, store */
 const store = (function () { 
   let items = [
     { id: cuid(), name: 'apples', checked: false },
@@ -43,7 +43,16 @@ const store = (function () {
     this.items = this.items.filter(item => id !== this.findById(item.id).id);
   };
 
-  return {items, hideCheckedItems, searchTerm, addItem, findAndToggleChecked, findAndDelete, findAndUpdateName, findById}; 
+  const setSearchTerm = function(val) {
+    this.searchTerm = val;
+  }; 
+  
+  const toggleCheckedFilter = function(){ 
+    this.hideCheckedItems = !this.hideCheckedItems; 
+  };
+
+  return {items, hideCheckedItems, searchTerm, addItem, findAndToggleChecked, 
+    findAndDelete, findAndUpdateName, findById, setSearchTerm, toggleCheckedFilter}; 
 }()); 
 
 

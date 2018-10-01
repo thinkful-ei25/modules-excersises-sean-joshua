@@ -83,8 +83,6 @@ const shoppingList = (function(){
     });
   }
   
-
-
   function getItemIdFromElement(item) {
     return $(item)
       .closest('.js-item-element')
@@ -98,19 +96,8 @@ const shoppingList = (function(){
       render();
     });
   }
-  
+    
  
-  
-
-  
-  function toggleCheckedItemsFilter() {
-    store.hideCheckedItems = !store.hideCheckedItems;
-  }
-  
-  function setSearchTerm(val) {
-    store.searchTerm = val;
-  }
-  
   
   function handleDeleteItemClicked() {
     // like in `handleItemCheckClicked`, we use event delegation
@@ -136,7 +123,7 @@ const shoppingList = (function(){
   
   function handleToggleFilterClick() {
     $('.js-filter-checked').click(() => {
-      toggleCheckedItemsFilter();
+      store.toggleCheckedFilter(); 
       render();
     });
   }
@@ -144,7 +131,7 @@ const shoppingList = (function(){
   function handleShoppingListSearch() {
     $('.js-shopping-list-search-entry').on('keyup', event => {
       const val = $(event.currentTarget).val();
-      setSearchTerm(val);
+      store.setSearchTerm(val);
       render();
     });
   }
