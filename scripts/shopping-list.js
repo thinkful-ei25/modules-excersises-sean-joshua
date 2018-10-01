@@ -1,5 +1,5 @@
 'use strict'; 
-/* global store, cuid */
+/* global store, Item, cuid */
 
 // eslint-disable-next-line no-unused-vars
 /*eslint-env jquery*/
@@ -59,6 +59,16 @@ const shoppingList = (function(){
   
   
   function addItemToShoppingList(itemName) {
+    console.log('heyyyoo');
+    try {
+      Item.validateName(itemName); 
+      Item.create(itemName); 
+     
+   
+      render();  
+    } catch (error) {
+      console.log(`Cannot add item: ${error.message}`); 
+    }
     store.items.push({ id: cuid(), name: itemName, checked: false });
   }
   
@@ -76,7 +86,6 @@ const shoppingList = (function(){
     const foundItem = store.items.find(item => item.id === id);
     foundItem.checked = !foundItem.checked;
   }
-  
   
   function getItemIdFromElement(item) {
     return $(item)
